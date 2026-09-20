@@ -264,6 +264,34 @@ function getCompleteSidebar(): SidebarConfig {
       ] as SidebarItem[],
     },
     {
+      label: t`Investment`,
+      name: 'investment',
+      icon: 'coins',
+      faIcon: 'fa fa-line-chart',
+      collapsible: true,
+      route: '/list/Investment',
+      items: [
+        {
+          label: t`Investors`,
+          name: 'investors',
+          route: '/list/Investor',
+          schemaName: 'Investor',
+        },
+        {
+          label: t`Investments`,
+          name: 'investments',
+          route: '/list/Investment',
+          schemaName: 'Investment',
+        },
+        {
+          label: t`Investment Payouts`,
+          name: 'investment-payouts',
+          route: '/list/InvestmentPayout',
+          schemaName: 'InvestmentPayout',
+        },
+      ] as SidebarItem[],
+    },
+    {
       label: t`Common`,
       name: 'common-entries',
       icon: 'common-entries',

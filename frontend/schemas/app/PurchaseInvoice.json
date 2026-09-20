@@ -25,6 +25,22 @@
       "section": "Default"
     },
     {
+      "fieldname": "investment",
+      "label": "Investment",
+      "fieldtype": "Link",
+      "target": "Investment",
+      "create": true,
+      "section": "Default"
+    },
+    {
+      "fieldname": "investor",
+      "label": "Investor",
+      "fieldtype": "Link",
+      "target": "Investor",
+      "readOnly": true,
+      "section": "Default"
+    },
+    {
       "fieldname": "backReference",
       "label": "Back Reference",
       "fieldtype": "Link",

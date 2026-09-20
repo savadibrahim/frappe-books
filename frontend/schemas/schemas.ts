@@ -18,6 +18,10 @@ import NumberSeries from './app/NumberSeries.json';
 import SerialNumberSeries from './app/SerialNumberSeries.json';
 import Party from './app/Party.json';
 import Lead from './app/Lead.json';
+import Investor from './app/Investor.json';
+import Investment from './app/Investment.json';
+import InvestmentReinvestment from './app/InvestmentReinvestment.json';
+import InvestmentPayout from './app/InvestmentPayout.json';
 import LoyaltyProgram from './app/LoyaltyProgram.json';
 import LoyaltyPointEntry from './app/LoyaltyPointEntry.json';
 import CollectionRulesItems from './app/CollectionRulesItems.json';
@@ -113,6 +117,10 @@ export const appSchemas: Schema[] | SchemaStub[] = [
 
   Party as Schema,
   Lead as Schema,
+  Investor as Schema,
+  Investment as Schema,
+  InvestmentReinvestment as Schema,
+  InvestmentPayout as Schema,
   Address as Schema,
   ItemGroup as Schema,
   Item as Schema,

@@ -25,6 +25,13 @@
       "section": "Default"
     },
     {
+      "fieldname": "purchaseInvoice",
+      "label": "Purchase Invoice",
+      "fieldtype": "Link",
+      "target": "PurchaseInvoice",
+      "section": "Default"
+    },
+    {
       "fieldname": "coupons",
       "label": "Coupons",
       "fieldtype": "Table",

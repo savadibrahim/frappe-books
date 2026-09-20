@@ -1,0 +1,68 @@
+{
+  "name": "Investor",
+  "label": "Investor",
+  "naming": "manual",
+  "fields": [
+    {
+      "fieldname": "name",
+      "label": "Investor Name",
+      "fieldtype": "Data",
+      "required": true,
+      "placeholder": "Full Name",
+      "section": "Default"
+    },
+    {
+      "fieldname": "disabled",
+      "label": "Disabled",
+      "fieldtype": "Check",
+      "default": false,
+      "section": "Default"
+    },
+    {
+      "fieldname": "email",
+      "label": "Email",
+      "fieldtype": "Data",
+      "placeholder": "john@doe.com",
+      "section": "Contacts"
+    },
+    {
+      "fieldname": "phone",
+      "label": "Phone",
+      "fieldtype": "Data",
+      "placeholder": "Phone",
+      "section": "Contacts"
+    },
+    {
+      "fieldname": "address",
+      "label": "Address",
+      "fieldtype": "Text",
+      "section": "Address"
+    },
+    {
+      "fieldname": "bankName",
+      "label": "Bank Name",
+      "fieldtype": "Data",
+      "section": "Bank Details"
+    },
+    {
+      "fieldname": "bankAccountNo",
+      "label": "Bank Account No",
+      "fieldtype": "Data",
+      "section": "Bank Details"
+    },
+    {
+      "fieldname": "iban",
+      "label": "IBAN",
+      "fieldtype": "Data",
+      "section": "Bank Details"
+    },
+    {
+      "fieldname": "notes",
+      "label": "Notes",
+      "fieldtype": "Text",
+      "section": "Notes"
+    }
+  ],
+  "keywordFields": ["name", "email", "phone"],
+  "quickEditFields": ["name", "email", "phone"]
+}

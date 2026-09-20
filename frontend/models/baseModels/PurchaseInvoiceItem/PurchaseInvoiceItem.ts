@@ -1,3 +1,5 @@
 import { InvoiceItem } from '../InvoiceItem/InvoiceItem';
 
-export class PurchaseInvoiceItem extends InvoiceItem {}
+export class PurchaseInvoiceItem extends InvoiceItem {
+  investment?: string;
+}

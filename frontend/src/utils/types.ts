@@ -51,6 +51,10 @@ export interface SidebarRoot {
   name: string;
   route: string;
   icon: string;
+  /** Font Awesome class string, e.g. "fa fa-line-chart". When set, used instead of lucide `icon`. */
+  faIcon?: string;
+  /** When true, group expands/collapses on click instead of only via active route. */
+  collapsible?: boolean;
   iconSize?: string;
   iconHeight?: number;
   hidden?: () => boolean;

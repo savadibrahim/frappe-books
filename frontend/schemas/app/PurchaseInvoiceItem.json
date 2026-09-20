@@ -1,5 +1,14 @@
 {
   "name": "PurchaseInvoiceItem",
   "label": "Purchase Invoice Item",
-  "extends": "InvoiceItem"
+  "extends": "InvoiceItem",
+  "fields": [
+    {
+      "fieldname": "investment",
+      "label": "Investment",
+      "fieldtype": "Link",
+      "target": "Investment",
+      "create": true
+    }
+  ]
 }

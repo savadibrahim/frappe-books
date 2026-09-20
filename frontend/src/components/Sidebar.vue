@@ -30,11 +30,26 @@
         <FrappeSidebarItem
           :label="group.label"
           :active="Boolean(isGroupActive(group) && !group.items)"
-          class="mx-2 mb-1 [&_[data-slot='sidebar-item-suffix']]:hidden"
-          @click="routeToSidebarItem(group)"
+          class="mx-2 mb-1"
+          :class="{
+            '[&_[data-slot=sidebar-item-suffix]]:hidden': !group.collapsible,
+          }"
+          @click="onGroupClick(group)"
         >
           <template #prefix>
+            <i
+              v-if="group.faIcon"
+              :class="[
+                group.faIcon,
+                'flex-shrink-0 w-[18px] text-center text-[15px] leading-none',
+                isGroupActive(group) || isGroupExpanded(group)
+                  ? 'text-ink-gray-8'
+                  : 'text-ink-gray-6',
+              ]"
+              aria-hidden="true"
+            />
             <Icon
+              v-else
               class="flex-shrink-0"
               :name="group.icon"
               :size="group.iconSize || '18'"
@@ -43,10 +58,18 @@
               :darkMode="darkMode"
             />
           </template>
+          <template v-if="group.collapsible && group.items?.length" #suffix>
+            <Icon
+              name="chevron-right"
+              class="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-150"
+              :class="{ 'rotate-90': isGroupExpanded(group) }"
+              :active="isGroupExpanded(group)"
+            />
+          </template>
         </FrappeSidebarItem>
 
         <!-- Expanded Group -->
-        <div v-if="group.items && isGroupActive(group)">
+        <div v-if="group.items && isGroupExpanded(group)">
           <FrappeSidebarItem
             v-for="item in group.items"
             :key="item.label"
@@ -179,11 +202,13 @@ export default defineComponent({
       groups: [],
       viewShortcuts: false,
       activeGroup: null,
+      expandedGroups: {},
     } as {
       companyName: string;
       groups: SidebarConfig;
       viewShortcuts: boolean;
       activeGroup: null | SidebarRoot;
+      expandedGroups: Record<string, boolean>;
     };
   },
   async mounted() {
@@ -248,12 +273,36 @@ export default defineComponent({
             )) ??
         fallBackGroup ??
         this.groups[0];
+
+      if (this.activeGroup?.collapsible) {
+        this.expandedGroups = {
+          ...this.expandedGroups,
+          [this.activeGroup.name]: true,
+        };
+      }
     },
     isItemActive(item: SidebarItem) {
       return matchesSidebarPath(getSidebarPath(this.$route), item.route);
     },
     isGroupActive(group: SidebarRoot) {
       return this.activeGroup && group.label === this.activeGroup.label;
+    },
+    isGroupExpanded(group: SidebarRoot) {
+      if (group.collapsible) {
+        return !!this.expandedGroups[group.name];
+      }
+      return !!this.isGroupActive(group);
+    },
+    onGroupClick(group: SidebarRoot) {
+      if (group.collapsible && group.items?.length) {
+        const next = !this.expandedGroups[group.name];
+        this.expandedGroups = {
+          ...this.expandedGroups,
+          [group.name]: next,
+        };
+        return;
+      }
+      this.routeToSidebarItem(group);
     },
     routeToSidebarItem(item: SidebarItem | SidebarRoot) {
       routeTo(this.getPath(item));

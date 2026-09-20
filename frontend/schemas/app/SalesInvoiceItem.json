@@ -13,6 +13,18 @@
       "fieldname": "pricingRule",
       "fieldtype": "Data",
       "hidden": true
+    },
+    {
+      "fieldname": "purchaseInvoice",
+      "label": "Purchase Invoice",
+      "fieldtype": "Link",
+      "target": "PurchaseInvoice"
+    },
+    {
+      "fieldname": "purchaseInvoiceItem",
+      "label": "Purchase Invoice Item",
+      "fieldtype": "Link",
+      "target": "PurchaseInvoiceItem"
     }
   ]
 }

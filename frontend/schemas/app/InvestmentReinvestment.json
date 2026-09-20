@@ -1,0 +1,24 @@
+{
+  "name": "InvestmentReinvestment",
+  "label": "Investment Reinvestment",
+  "isChild": true,
+  "fields": [
+    {
+      "fieldname": "date",
+      "label": "Date",
+      "fieldtype": "Date",
+      "required": true
+    },
+    {
+      "fieldname": "amount",
+      "label": "Amount",
+      "fieldtype": "Currency",
+      "required": true
+    },
+    {
+      "fieldname": "remarks",
+      "label": "Remarks",
+      "fieldtype": "Text"
+    }
+  ]
+}

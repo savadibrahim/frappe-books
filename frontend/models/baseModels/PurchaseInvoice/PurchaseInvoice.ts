@@ -8,6 +8,40 @@ import { createBatch } from 'models/inventory/helpers';
 
 export class PurchaseInvoice extends Invoice {
   items?: PurchaseInvoiceItem[];
+  investment?: string;
+  investor?: string;
+
+  async _applyChange(
+    fieldname: string,
+    retriggerChildDocApplyChange?: boolean
+  ): Promise<boolean | undefined> {
+    const result = await super._applyChange(
+      fieldname,
+      retriggerChildDocApplyChange
+    );
+
+    if (fieldname === 'investment') {
+      if (this.investment) {
+        const investor = (await this.fyo.getValue(
+          ModelNameEnum.Investment,
+          this.investment,
+          'investor'
+        )) as string | null;
+        if (investor) {
+          await this.set('investor', investor);
+        }
+        for (const row of this.items ?? []) {
+          if (!row.investment) {
+            await row.set('investment', this.investment);
+          }
+        }
+      } else {
+        await this.set('investor', null);
+      }
+    }
+
+    return result;
+  }
 
   async beforeSubmit(): Promise<void> {
     await super.beforeSubmit();
@@ -48,6 +82,7 @@ export class PurchaseInvoice extends Invoice {
         'name',
         getTransactionStatusColumn(),
         'party',
+        'investment',
         'date',
         'baseGrandTotal',
         'outstandingAmount',

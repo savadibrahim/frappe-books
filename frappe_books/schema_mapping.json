@@ -661,7 +661,9 @@
         "setDiscountAmount": "set_discount_amount",
         "stockNotTransferred": "stock_not_transferred",
         "taxes": "taxes",
-        "terms": "terms"
+        "terms": "terms",
+        "investment": "custom_investment",
+        "investor": "custom_investor"
       }
     },
     "PurchaseInvoiceItem": {
@@ -690,7 +692,8 @@
         "transferUnit": "transfer_unit",
         "unit": "unit",
         "unitConversionFactor": "unit_conversion_factor",
-        "isManualRate": "is_manual_rate"
+        "isManualRate": "is_manual_rate",
+        "investment": "custom_investment"
       }
     },
     "PurchaseReceipt": {
@@ -769,7 +772,8 @@
         "setDiscountAmount": "set_discount_amount",
         "stockNotTransferred": "stock_not_transferred",
         "taxes": "taxes",
-        "terms": "terms"
+        "terms": "terms",
+        "purchaseInvoice": "custom_purchase_invoice"
       }
     },
     "SalesInvoiceItem": {
@@ -800,7 +804,9 @@
         "transferUnit": "transfer_unit",
         "unit": "unit",
         "unitConversionFactor": "unit_conversion_factor",
-        "isManualRate": "is_manual_rate"
+        "isManualRate": "is_manual_rate",
+        "purchaseInvoice": "custom_purchase_invoice",
+        "purchaseInvoiceItem": "custom_purchase_invoice_item"
       }
     },
     "SalesQuote": {
@@ -1031,6 +1037,65 @@
         "conversionFactor": "conversion_factor",
         "name": "name",
         "uom": "uom"
+      }
+    },
+    "Investor": {
+      "doctype": "Investor",
+      "fields": {
+        "address": "address",
+        "bankAccountNo": "bank_account_no",
+        "bankName": "bank_name",
+        "disabled": "disabled",
+        "email": "email",
+        "iban": "iban",
+        "name": "name",
+        "notes": "notes",
+        "phone": "phone"
+      }
+    },
+    "Investment": {
+      "doctype": "Investment",
+      "fields": {
+        "amount": "amount",
+        "date": "date",
+        "investor": "investor",
+        "investorName": "investor_name",
+        "investorProfit": "investor_profit",
+        "investorProfitPercent": "investor_profit_percent",
+        "linkedPurchaseCost": "linked_purchase_cost",
+        "linkedSalesAmount": "linked_sales_amount",
+        "margin": "margin",
+        "name": "name",
+        "notes": "notes",
+        "payoutDue": "payout_due",
+        "reinvestments": "reinvestments",
+        "status": "status",
+        "totalCapital": "total_capital",
+        "totalPaidOut": "total_paid_out",
+        "totalReinvested": "total_reinvested"
+      }
+    },
+    "InvestmentReinvestment": {
+      "doctype": "Investment Reinvestment",
+      "fields": {
+        "amount": "amount",
+        "date": "date",
+        "name": "name",
+        "remarks": "remarks"
+      }
+    },
+    "InvestmentPayout": {
+      "doctype": "Investment Payout",
+      "fields": {
+        "amount": "amount",
+        "date": "date",
+        "investment": "investment",
+        "investor": "investor",
+        "investorName": "investor_name",
+        "name": "name",
+        "payoutDue": "payout_due",
+        "remarks": "remarks",
+        "status": "status"
       }
     }
   },

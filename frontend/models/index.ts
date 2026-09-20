@@ -13,6 +13,10 @@ import { LoyaltyProgram } from './baseModels/LoyaltyProgram/LoyaltyProgram';
 import { LoyaltyPointEntry } from './baseModels/LoyaltyPointEntry/LoyaltyPointEntry';
 import { CollectionRulesItems } from './baseModels/CollectionRulesItems/CollectionRulesItems';
 import { Lead } from './baseModels/Lead/Lead';
+import { Investor } from './baseModels/Investor/Investor';
+import { Investment } from './baseModels/Investment/Investment';
+import { InvestmentReinvestment } from './baseModels/InvestmentReinvestment/InvestmentReinvestment';
+import { InvestmentPayout } from './baseModels/InvestmentPayout/InvestmentPayout';
 import { AppliedCouponCodes } from './baseModels/AppliedCouponCodes/AppliedCouponCodes';
 import { CouponCode } from './baseModels/CouponCode/CouponCode';
 import { Payment } from './baseModels/Payment/Payment';
@@ -69,6 +73,10 @@ export const models = {
   JournalEntryAccount,
   Misc,
   Lead,
+  Investor,
+  Investment,
+  InvestmentReinvestment,
+  InvestmentPayout,
   Party,
   LoyaltyProgram,
   LoyaltyPointEntry,

@@ -1,0 +1,127 @@
+{
+  "name": "Investment",
+  "label": "Investment",
+  "naming": "random",
+  "fields": [
+    {
+      "fieldname": "investor",
+      "label": "Investor",
+      "fieldtype": "Link",
+      "target": "Investor",
+      "create": true,
+      "required": true,
+      "section": "Default"
+    },
+    {
+      "fieldname": "investorName",
+      "label": "Investor Name",
+      "fieldtype": "Data",
+      "readOnly": true,
+      "section": "Default"
+    },
+    {
+      "fieldname": "date",
+      "label": "Date",
+      "fieldtype": "Date",
+      "required": true,
+      "section": "Default"
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "default": "Open",
+      "options": [
+        { "value": "Open", "label": "Open" },
+        { "value": "Partially Paid", "label": "Partially Paid" },
+        { "value": "Closed", "label": "Closed" }
+      ],
+      "readOnly": true,
+      "section": "Default"
+    },
+    {
+      "fieldname": "amount",
+      "label": "Initial Amount",
+      "fieldtype": "Currency",
+      "required": true,
+      "section": "Capital"
+    },
+    {
+      "fieldname": "totalReinvested",
+      "label": "Total Reinvested",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Capital"
+    },
+    {
+      "fieldname": "totalCapital",
+      "label": "Total Capital",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Capital"
+    },
+    {
+      "fieldname": "linkedPurchaseCost",
+      "label": "Purchase Cost",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "linkedSalesAmount",
+      "label": "Sales Amount",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "margin",
+      "label": "Margin",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "investorProfitPercent",
+      "label": "Investor Profit %",
+      "fieldtype": "Float",
+      "default": 100,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "investorProfit",
+      "label": "Investor Profit",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "totalPaidOut",
+      "label": "Total Paid Out",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "payoutDue",
+      "label": "Payout Due",
+      "fieldtype": "Currency",
+      "readOnly": true,
+      "section": "Purchase, Sales & Margin"
+    },
+    {
+      "fieldname": "reinvestments",
+      "label": "Reinvestments",
+      "fieldtype": "Table",
+      "target": "InvestmentReinvestment",
+      "section": "Reinvestments"
+    },
+    {
+      "fieldname": "notes",
+      "label": "Notes",
+      "fieldtype": "Text",
+      "section": "Notes"
+    }
+  ],
+  "keywordFields": ["name", "investor", "investorName", "status"]
+}

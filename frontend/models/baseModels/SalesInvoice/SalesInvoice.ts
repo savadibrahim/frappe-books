@@ -16,6 +16,27 @@ import { Doc } from 'fyo/model/doc';
 
 export class SalesInvoice extends Invoice {
   items?: SalesInvoiceItem[];
+  purchaseInvoice?: string;
+
+  async _applyChange(
+    fieldname: string,
+    retriggerChildDocApplyChange?: boolean
+  ): Promise<boolean | undefined> {
+    const result = await super._applyChange(
+      fieldname,
+      retriggerChildDocApplyChange
+    );
+
+    if (fieldname === 'purchaseInvoice' && this.purchaseInvoice) {
+      for (const row of this.items ?? []) {
+        if (!row.purchaseInvoice) {
+          await row.set('purchaseInvoice', this.purchaseInvoice);
+        }
+      }
+    }
+
+    return result;
+  }
 
   validations: ValidationMap = {
     loyaltyPoints: async (value: DocValue) => {
