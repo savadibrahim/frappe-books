@@ -104,6 +104,18 @@ class IntegrationTestUiBridge(IntegrationTestCase):
 		self.assertEqual(source["account"], "Cash")
 		self.assertEqual(source["paymentAccount"], "Creditors")
 
+	def test_iso_datetime_with_z_is_normalized_for_mariadb(self):
+		target = self.bridge._target_values(
+			"POSOpeningShift",
+			{"openingDate": "2026-09-20T18:24:54.389Z"},
+		)
+		self.assertEqual(target["opening_date"], "2026-09-20 18:24:54.389000")
+		frappe.db.sql(
+			"INSERT INTO `tabBooks Pos Opening Shift` (name, opening_date) VALUES (%s, %s)",
+			("__test_iso_z__", target["opening_date"]),
+		)
+		frappe.db.rollback()
+
 	def test_autoincrement_query_returns_latest_numeric_name(self):
 		first = frappe.get_doc({"doctype": "Books Item Enquiry", "item": "First bridge enquiry"}).insert(
 			ignore_permissions=True

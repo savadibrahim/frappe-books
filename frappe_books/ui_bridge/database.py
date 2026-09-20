@@ -533,6 +533,13 @@ def _target_value(meta, fieldname: str, value: Any) -> Any:
 	field = meta.get_field(fieldname)
 	if field and field.fieldtype in NUMERIC_FIELDTYPES:
 		return _numeric_value(field.fieldtype, value)
+	# Books SPA sends JS ISO strings (often with trailing Z). MariaDB rejects those
+	# on INSERT under STRICT_TRANS_TABLES, so normalize before write.
+	if field and value not in (None, ""):
+		if field.fieldtype == "Datetime":
+			return frappe.db.format_datetime(value)
+		if field.fieldtype == "Date":
+			return frappe.db.format_date(value)
 	return value
 
 
